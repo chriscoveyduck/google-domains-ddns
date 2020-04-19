@@ -1,12 +1,11 @@
 import requests
 import json
 import socket
-import base64
 import os
 import logging
 import time
 
-def getPublicIp():
+def getCurrentIp():
     # Try/catch incase of retrieve error
     try:
         parms = {'application': json}
@@ -22,11 +21,11 @@ def getPublicIp():
         logger.error("Exception raised getting current Public IP: " + e.strerror)
         return "x.x.x.x"
 
-def getConnectIp():
+def getHostnameIp():
     # Try/catch incase of retrieve error
     try:
-        addr = socket.gethostbyname('connect.67uqr.net')
-        logger.info("Get current Connect IP: " + addr)
+        addr = socket.gethostbyname(os.getenv("HOSTNAME"))
+        logger.info("Get current Hostname IP: " + addr)
         return addr
     except socket.error as e:
         logger.error("Exception raised getting IP for " + os.getenv("HOSTNAME") + ": " + e.strerror)
@@ -49,7 +48,7 @@ def updateProcess():
     # Get public IP using retry logic(3), sleeping for seconds(5)
     i = 0
     while i < 3:
-        pubIp = getPublicIp()
+        pubIp = getCurrentIp()
         if pubIp == "x.x.x.x":
             i += 1
             time.sleep(5)
@@ -59,7 +58,7 @@ def updateProcess():
     # Get target IP using retry logic(3)
     i = 0
     while i < 3:
-        conIp = getConnectIp()
+        conIp = getHostnameIp()
         if conIp == "x.x.x.x":
             i += 1
             time.sleep(5)
