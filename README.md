@@ -1,6 +1,6 @@
 # Google Domains Dynamic DNS Updater
 
-A simple updater for Google Domains Dynamic DNS Synthetic records.  The app should be run from the host where the assigned public IP address changes, e.g. Home DSL or cloud providers without static public IP.
+A simple updater for Google Domains Synthetic records Dynamic DNS .  The app should be run from the host where the assigned public IP address changes, e.g. Home DSL or cloud providers without static public IP.
 
 ## Overview
 
@@ -8,7 +8,7 @@ The app works through the following process:
 
 1. Gets the current public IP address using ifconfig.co
 2. Gets the current Synthetic record IP address configured in Google Domains
-3. Checks if they are same/different
+3. Compares the addresses
 4. Updates the Synthetic record with the new IP, only if it has changed
 
 The process currently repeats every 5 minutes, this is a simple sleep timeer (300s) so over time the update point will drift.
@@ -26,8 +26,8 @@ The App can be run as a script or you can download the Docker container image fr
 The app takes in 4 environment variables.
 
 1. HOSTNAME // The target synthetic record on Google Domains
-2. USERNAME // The Dynamic DNS Synthetic Record username created in the Google Domains portal
-3. PASSWORD // The Dynamic DNS Synthetic Record password created in the Google Domains portal
+2. USERNAME // The Synthetic Record Dynamic DNS username created in the Google Domains portal
+3. PASSWORD // The Synthetic Record Dynamic DNS password created in the Google Domains portal
 4. UPDATE_URL // Google Domain's API endpoint
 
 ## Setting up Google Domains Synthetic Record Dynamic DNS
