@@ -65,7 +65,6 @@ def updateProcess():
         else:
             i += 3
 
-
     # If either IP's cannot be determined log an error and stop update
     if pubIp == "x.x.x.x" or conIp == "x.x.x.x":
         logger.error("Error in getting IP's to evaluate, cancelling update")
