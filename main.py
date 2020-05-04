@@ -40,7 +40,7 @@ def compareIp(addr1, addr2):
         return "update"
 
 def updateConnectIp(addr):
-    uri = os.getenv("UPDATE_URL") + "?" + os.getenv("HOSTNAME") + "&myip=" + addr
+    uri = os.getenv("UPDATE_URL") + "?hostname=" + os.getenv("HOSTNAME") + "&myip=" + addr
     update = requests.post(url=uri, auth=(os.getenv("USERNAME"), os.getenv("PASSWORD")))
     logger.info("Update result: " + str(update.status_code))
 
