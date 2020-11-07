@@ -16,8 +16,7 @@ The process currently repeats every 5 minutes, this is a simple sleep timeer (30
 ## Future Enhancements
 
 1. Multiple Synthetic records to update
-2. Use Synthetic record TTL to drive update
-3. More robust scheduling
+2. More robust scheduling
 
 ## Deployment // Running the App
 
